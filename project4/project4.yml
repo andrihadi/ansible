@@ -1,0 +1,10 @@
+---
+- name: Copy web.html
+  hosts: target
+  vars_files: vars/vars.yml
+  vars:
+    - motd_value: "{{ lookup('file', '/etc/redhat-release') }}"
+  
+  tasks:
+    - debug:
+        msg: "motd value is {{ motd_value }}"

@@ -1,0 +1,26 @@
+---
+- name: Copy web.html
+  hosts: 127.0.0.1
+  vars_files: vars/vars.yml
+  
+  tasks:
+    
+    - name: Create file
+      shell: "touch /home/user14/{{ item }}"
+      loop:
+        - file1
+        - file2
+        - file3
+        - file4
+        - file5
+
+    - name: Echo file
+      shell: "echo {{ item }}"
+      loop:
+        - "one"
+        - "two"
+      register: echo
+
+    - name: Debug
+      debug:
+        var: echo
